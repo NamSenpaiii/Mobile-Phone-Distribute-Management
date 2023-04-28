@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
-namespace Mobile_Phone_Distribute_Management
+namespace View
 {
     static class Program
     {
@@ -16,7 +17,7 @@ namespace Mobile_Phone_Distribute_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }

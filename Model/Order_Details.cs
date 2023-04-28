@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,30 @@ namespace Model
             this.ProductID = ProductID;
             this.Quantity = Quantity;
             this.Price = Price;
+        }
+
+        public void addQuery()
+        {
+            string sql = "INSERT INTO Order_Details VALUES(" + OrderDetailID + "," + OrderID + "," + ProductID + "," + Quantity + "," + Price + ")";
+            Connection.actionQuery(sql);
+        }
+
+        public void updateQuery()
+        {
+            string sql = "UPDATE Order_Details SET OrderID = " + OrderID + ", ProductID = " + ProductID + ", Quantity = " + Quantity + ", Price = " + Price + " WHERE OrderDetailID = " + OrderDetailID;
+            Connection.actionQuery(sql);
+        }
+
+        public void deleteQuery()
+        {
+            string sql = "DELETE FROM Order_Details WHERE OrderDetailID = " + OrderDetailID;
+            Connection.actionQuery(sql);
+        }
+
+        public DataTable selectQuery()
+        {
+            string sql = "SELECT * FROM Order_Details";
+            return Connection.selectQuery(sql);
         }
 
         public int getOrderDetailID()

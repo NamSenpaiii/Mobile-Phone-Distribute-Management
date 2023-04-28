@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,36 @@ namespace Model
             this.LastName = lastName;
             this.Email = email;
             this.Password = password;
+        }
+
+        public Staffs(string username,string password)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
+
+        public void addQuery()
+        {
+            string sql = "INSERT INTO Staffs VALUES(" + StaffID + ",'" + Username + "','" + FirstName + "','" + LastName + "','" + Email + "','" + Password + "')";
+            Connection.actionQuery(sql);
+        }
+
+        public void updateQuery()
+        {
+            string sql = "UPDATE Staffs SET Username = '" + Username + "', FirstName = '" + FirstName + "', LastName = '" + LastName + "', Email = '" + Email + "', Password = '" + Password + "' WHERE StaffID = " + StaffID;
+            Connection.actionQuery(sql);
+        }
+
+        public void deleteQuery()
+        {
+            string sql = "DELETE FROM Staffs WHERE StaffID = " + StaffID;
+            Connection.actionQuery(sql);
+        }
+
+        public DataTable selectQuery()
+        {
+            string sql = "SELECT * FROM Staffs WHERE Username = '" + Username + "' AND Password = '" + Password + "'";
+            return Connection.selectQuery(sql);
         }
 
         public int getStaffID()

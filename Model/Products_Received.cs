@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +11,51 @@ namespace Model
     {
         private int ReceivedID;
         private int OrderID;
-        private int ProductID;
         private int Quantity;
         private DateTime ReceivedDate;
-        private string Provider;
 
-        public Products_Received(int ReceivedID, int OrderID, int ProductID, int Quantity, DateTime ReceivedDate, string Provider)
+        public Products_Received(int ReceivedID, int OrderID, int Quantity, DateTime ReceivedDate)
         {
             this.ReceivedID = ReceivedID;
             this.OrderID = OrderID;
-            this.ProductID = ProductID;
             this.Quantity = Quantity;
             this.ReceivedDate = ReceivedDate;
-            this.Provider = Provider;
+        }
+
+        public Products_Received() { }
+
+        public void addQuery()
+        {
+            string sql = "INSERT INTO Products_Received VALUES(" + ReceivedID + "," + OrderID + "," + Quantity + ",'" + ReceivedDate.ToString("yyyy-MM-dd") + "')";
+            Connection.actionQuery(sql);
+        }
+
+        public void updateQuery()
+        {
+            string sql = "UPDATE Products_Received SET OrderID = " + OrderID + ", Quantity = " + Quantity + ", ReceivedDate = '" + ReceivedDate.ToString("yyyy-MM-dd") + "' WHERE ReceivedID = " + ReceivedID;
+            Connection.actionQuery(sql);
+        }
+
+        public void deleteQuery()
+        {
+            string sql = "DELETE FROM Products_Received WHERE ReceivedID = " + ReceivedID;
+            Connection.actionQuery(sql);
+        }
+
+        public DataTable selectQuery()
+        {
+            string sql = "SELECT * FROM Products_Received";
+            return Connection.selectQuery(sql);
+        }
+
+        public int generateID()
+        {
+            string sql = "SELECT MAX(ReceivedID) FROM Products_Received";
+            if(selectQuery().Rows.Count > 0)
+            {
+                return Connection.selectQuery(sql).Rows[0].Field<int>(0) + 1;
+            }
+            return 1;
         }
 
         public int getReceivedID()
@@ -35,10 +68,6 @@ namespace Model
             return OrderID;
         }
 
-        public int getProductID()
-        {
-            return ProductID;
-        }
 
         public int getQuantity()
         {
@@ -50,10 +79,6 @@ namespace Model
             return ReceivedDate;
         }
 
-        public string getProvider()
-        {
-            return Provider;
-        }
 
         public void setReceivedID(int ReceivedID)
         {
@@ -63,11 +88,6 @@ namespace Model
         public void setOrderID(int OrderID)
         {
             this.OrderID = OrderID;
-        }
-
-        public void setProductID(int ProductID)
-        {
-            this.ProductID = ProductID;
         }
 
         public void setQuantity(int Quantity)
