@@ -3,7 +3,7 @@ CREATE DATABASE MobilePhoneDistributeManagement;
 USE MobilePhoneDistributeManagement;
 
 CREATE TABLE Staffs (
-    StaffID INT IDENTITY(1,1) PRIMARY KEY,
+    StaffID INT PRIMARY KEY,
 	Username VARCHAR(50) NOT NULL UNIQUE,
     FirstName VARCHAR(50) NOT NULL,
     LastName VARCHAR(50) NOT NULL,
@@ -48,7 +48,7 @@ insert into Products_Received values(1,1,100,'2023/04/27')
 insert into Products_Received values(2,2,50,'2023/04/26')
 
 select * from Products_Received
-delete from Products_Received where ReceivedID = 2
+delete from Products_Received
 
 CREATE TABLE OrderDetails (
     OrderDetailID INT PRIMARY KEY,
