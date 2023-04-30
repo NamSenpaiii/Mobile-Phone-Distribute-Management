@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Order_Details
+    public class SO_Details
     {
         private int OrderDetailID;
         private int OrderID;
@@ -15,7 +14,7 @@ namespace Model
         private int Quantity;
         private decimal Price;
 
-        public Order_Details(int OrderDetailID, int OrderID, int ProductID, int Quantity, decimal Price)
+        public SO_Details(int OrderDetailID, int OrderID, int ProductID, int Quantity, decimal Price)
         {
             this.OrderDetailID = OrderDetailID;
             this.OrderID = OrderID;
@@ -26,26 +25,20 @@ namespace Model
 
         public void addQuery()
         {
-            string sql = "INSERT INTO Order_Details VALUES(" + OrderDetailID + "," + OrderID + "," + ProductID + "," + Quantity + "," + Price + ")";
+            string sql = "INSERT INTO SO_Details VALUES(" + OrderDetailID + "," + OrderID + "," + ProductID + "," + Quantity + "," + Price + ")";
             Connection.actionQuery(sql);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE Order_Details SET OrderID = " + OrderID + ", ProductID = " + ProductID + ", Quantity = " + Quantity + ", Price = " + Price + " WHERE OrderDetailID = " + OrderDetailID;
+            string sql = "UPDATE SO_Details SET OrderID = " + OrderID + ", ProductID = " + ProductID + ", Quantity = " + Quantity + ", Price = " + Price + " WHERE OrderDetailID = " + OrderDetailID;
             Connection.actionQuery(sql);
         }
 
         public void deleteQuery()
         {
-            string sql = "DELETE FROM Order_Details WHERE OrderDetailID = " + OrderDetailID;
+            string sql = "DELETE FROM SO_Details WHERE OrderDetailID = " + OrderDetailID;
             Connection.actionQuery(sql);
-        }
-
-        public DataTable selectQuery()
-        {
-            string sql = "SELECT * FROM Order_Details";
-            return Connection.selectQuery(sql);
         }
 
         public int getOrderDetailID()
@@ -71,7 +64,7 @@ namespace Model
         public decimal getPrice()
         {
             return Price;
-        }
+        }   
 
         public void setOrderDetailID(int OrderDetailID)
         {
@@ -97,5 +90,6 @@ namespace Model
         {
             this.Price = Price;
         }
+
     }
 }

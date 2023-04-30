@@ -29,5 +29,12 @@ namespace View
         {
 
         }
+
+        private void deliveryNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeliveryNoteForm frm = new DeliveryNoteForm();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

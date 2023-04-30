@@ -13,7 +13,7 @@ namespace View
 {
     public partial class ReceivedNoteForm : Form
     {
-        private int condition;
+        private int condition = 0;
         public ReceivedNoteForm()
         {
             InitializeComponent();

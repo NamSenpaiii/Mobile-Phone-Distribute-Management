@@ -43,10 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
-    <Compile Include="Orders.cs" />
-    <Compile Include="Order_Details.cs" />
+    <Compile Include="Products_Delivery.cs" />
+    <Compile Include="Purchase_Orders.cs" />
+    <Compile Include="PO_Details.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Products_Received.cs" />
+    <Compile Include="Sell_Orders.cs" />
+    <Compile Include="SO_Details.cs" />
     <Compile Include="Staffs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

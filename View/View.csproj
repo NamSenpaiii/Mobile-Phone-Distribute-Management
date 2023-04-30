@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeliveryNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryNoteForm.Designer.cs">
+      <DependentUpon>DeliveryNoteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReceivedNoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DeliveryNoteForm.resx">
+      <DependentUpon>DeliveryNoteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReceivedNoteForm.resx">
       <DependentUpon>ReceivedNoteForm.cs</DependentUpon>
     </EmbeddedResource>

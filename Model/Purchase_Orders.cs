@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Orders
+    public class Purchase_Orders
     {
         private int OrderID;
         private int StaffID;
         private DateTime OrderDate;
 
-        public Orders(int OrderID, int StaffID, DateTime OrderDate)
+        public Purchase_Orders(int OrderID, int StaffID, DateTime OrderDate)
         {
             this.OrderID = OrderID;
             this.StaffID = StaffID;
@@ -22,25 +22,25 @@ namespace Model
 
         public void addQuery()
         {
-            string sql = "INSERT INTO Orders VALUES(" + OrderID + ", " + StaffID + ", '" + OrderDate + "')";
+            string sql = "INSERT INTO Purchase_Orders VALUES(" + OrderID + ", " + StaffID + ", '" + OrderDate + "')";
             Connection.actionQuery(sql);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE Orders SET StaffID = " + StaffID + ", OrderDate = '" + OrderDate + "' WHERE OrderID = " + OrderID;
+            string sql = "UPDATE Purchase_Orders SET StaffID = " + StaffID + ", OrderDate = '" + OrderDate + "' WHERE OrderID = " + OrderID;
             Connection.actionQuery(sql);
         }
 
         public void deleteQuery()
         {
-            string sql = "DELETE FROM Orders WHERE OrderID = " + OrderID;
+            string sql = "DELETE FROM Purchase_Orders WHERE OrderID = " + OrderID;
             Connection.actionQuery(sql);
         }
 
         public DataTable selectQuery()
         {
-            string sql = "SELECT * FROM Orders";
+            string sql = "SELECT * FROM Purchase_Orders";
             return Connection.selectQuery(sql);
         }
         public int getOrderID()

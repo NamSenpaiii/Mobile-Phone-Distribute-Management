@@ -14,24 +14,26 @@ namespace Model
         private string Name;
         private string Description;
         private decimal Price;
+        private string Provider;
 
-        public Products(int ProductID, string Name, string Description, decimal Price)
+        public Products(int ProductID, string Name, string Description, decimal Price, string provider)
         {
             this.ProductID = ProductID;
             this.Name = Name;
             this.Description = Description;
             this.Price = Price;
+            this.Provider = provider;
         }
 
         public void addQuery()
         {
-            string sql = "INSERT INTO Products VALUES(" + ProductID + ",'" + Name + "','" + Description + "'," + Price + ")";
+            string sql = "INSERT INTO Products VALUES(" + ProductID + ",'" + Name + "','" + Description + "'," + Price + ",'" + Provider + "')";
             Connection.actionQuery(sql);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE Products SET Name = '" + Name + "', Description = '" + Description + "', Price = " + Price + " WHERE ProductID = " + ProductID;
+            string sql = "UPDATE Products SET Name = '" + Name + "', Description = '" + Description + "', Price = " + Price + ",'" + Provider + "' WHERE ProductID = " + ProductID;
             Connection.actionQuery(sql);
         }
 

@@ -70,6 +70,7 @@
             this.deliveryNoteToolStripMenuItem.Name = "deliveryNoteToolStripMenuItem";
             this.deliveryNoteToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.deliveryNoteToolStripMenuItem.Text = "Delivery Note";
+            this.deliveryNoteToolStripMenuItem.Click += new System.EventHandler(this.deliveryNoteToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
