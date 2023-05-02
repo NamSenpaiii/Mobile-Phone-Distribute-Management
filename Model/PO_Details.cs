@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Model
 {
@@ -24,28 +25,61 @@ namespace Model
             this.Price = Price;
         }
 
+        public PO_Details() { }
+
         public void addQuery()
         {
-            string sql = "INSERT INTO PO_Details VALUES(" + OrderDetailID + "," + OrderID + "," + ProductID + "," + Quantity + "," + Price + ")";
-            Connection.actionQuery(sql);
+            string sql = "INSERT INTO PO_Details VALUES(@OrderDetailID,@OrderID,@ProductID,@Quantity,@Price)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderDetailID", OrderDetailID),
+                new SqlParameter("@OrderID", OrderID),
+                new SqlParameter("@ProductID", ProductID),
+                new SqlParameter("@Quantity", Quantity),
+                new SqlParameter("@Price", Price)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE PO_Details SET OrderID = " + OrderID + ", ProductID = " + ProductID + ", Quantity = " + Quantity + ", Price = " + Price + " WHERE OrderDetailID = " + OrderDetailID;
-            Connection.actionQuery(sql);
+            string sql = "UPDATE PO_Details SET OrderID = @OrderID, ProductID = @ProductID, Quantity = @Quantity, Price = @Price WHERE OrderDetailID = @OrderDetailID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderDetailID", OrderDetailID),
+                new SqlParameter("@OrderID", OrderID),
+                new SqlParameter("@ProductID", ProductID),
+                new SqlParameter("@Quantity", Quantity),
+                new SqlParameter("@Price", Price)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void deleteQuery()
         {
-            string sql = "DELETE FROM PO_Details WHERE OrderDetailID = " + OrderDetailID;
-            Connection.actionQuery(sql);
+            string sql = "DELETE FROM PO_Details WHERE OrderDetailID = @OrderDetailID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderDetailID", OrderDetailID)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public DataTable selectQuery()
         {
             string sql = "SELECT * FROM PO_Details";
-            return Connection.selectQuery(sql);
+            SqlParameter[] parameters = new SqlParameter[0];
+            return Connection.selectQuery(sql, parameters);
+        }
+
+        public DataTable orderIDSelectQuery()
+        {
+            string sql = "SELECT * FROM PO_Details WHERE OrderID = @OrderID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", OrderID)
+            };
+            return Connection.selectQuery(sql, parameters);
         }
 
         public int getOrderDetailID()

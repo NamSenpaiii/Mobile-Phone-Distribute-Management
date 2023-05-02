@@ -96,22 +96,38 @@ namespace View
             if(condition == 1)
             {
                 ProdReceivedController pr = new ProdReceivedController(Convert.ToInt32(tbID.Text), Convert.ToInt32(tbOrderID.Text), Convert.ToInt32(tbQuantity.Text), Convert.ToDateTime(dtReceivedDate.Value.ToShortDateString()));
-                pr.addQuery();
-                MessageBox.Show("Add success","Action status");
+                if (pr.addProdReceivedAction())
+                {
+                    MessageBox.Show("Add success", "Action status");
+                }
+                else
+                {
+                    MessageBox.Show("Add fail,Some error occurred", "Action status");
+                }
+                
                 condition = 0;
+                clear();
                 load();
             }
             else if(condition == 2)
             {
                 ProdReceivedController pr = new ProdReceivedController(Convert.ToInt32(tbID.Text), Convert.ToInt32(tbOrderID.Text), Convert.ToInt32(tbQuantity.Text), Convert.ToDateTime(dtReceivedDate.Value.ToShortDateString()));
-                pr.updateQuery();
-                MessageBox.Show("Update success", "Action status");
+                if (pr.updateProdReceivedAction())
+                {
+                    MessageBox.Show("Update success", "Action status");
+                }
+                else
+                {
+                    MessageBox.Show("Update fail, Some error occurred", "Action status");
+                }
                 condition = 0;
+                clear();
                 load();
             }
             else
             {
                 condition = 0;
+                clear();
                 load();
             }
         }
@@ -127,12 +143,20 @@ namespace View
             if(MessageBox.Show("Are you sure to delete this record?","Action confirm",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ProdReceivedController pr = new ProdReceivedController(Convert.ToInt32(tbID.Text), Convert.ToInt32(tbOrderID.Text), Convert.ToInt32(tbQuantity.Text), Convert.ToDateTime(dtReceivedDate.Value.ToShortDateString()));
-                pr.deleteQuery();
-                MessageBox.Show("Delete success", "Action status");
+                if (pr.deleteProdReceivedAction())
+                {
+                    MessageBox.Show("Delete success", "Action status");
+                }
+                else
+                {
+                    MessageBox.Show("Delete fail, Some error occurred", "Action status");
+                }
+                clear();
                 load();
             }else
             {
                 MessageBox.Show("Delete Cancel", "Action status");
+                clear();
                 load();
             }
         }

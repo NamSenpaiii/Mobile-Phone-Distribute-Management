@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,26 +31,53 @@ namespace Model
 
         public void addQuery()
         {
-            string sql = "INSERT INTO Staffs VALUES(" + StaffID + ",'" + Username + "','" + FirstName + "','" + LastName + "','" + Email + "','" + Password + "')";
-            Connection.actionQuery(sql);
+            string sql = "INSERT INTO Staffs VALUES(@StaffID,@Username,@FirstName,@LastName,@Email,@Password)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@StaffID", StaffID),
+                new SqlParameter("@Username", Username),
+                new SqlParameter("@FirstName", FirstName),
+                new SqlParameter("@LastName", LastName),
+                new SqlParameter("@Email", Email),
+                new SqlParameter("@Password", Password)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE Staffs SET Username = '" + Username + "', FirstName = '" + FirstName + "', LastName = '" + LastName + "', Email = '" + Email + "', Password = '" + Password + "' WHERE StaffID = " + StaffID;
-            Connection.actionQuery(sql);
+            string sql = "UPDATE Staffs SET Username = @Username, FirstName = @FirstName, LastName = @LastName, Email = @Email, Password = @Password WHERE StaffID = @StaffID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@StaffID", StaffID),
+                new SqlParameter("@Username", Username),
+                new SqlParameter("@FirstName", FirstName),
+                new SqlParameter("@LastName", LastName),
+                new SqlParameter("@Email", Email),
+                new SqlParameter("@Password", Password)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void deleteQuery()
         {
-            string sql = "DELETE FROM Staffs WHERE StaffID = " + StaffID;
-            Connection.actionQuery(sql);
+            string sql = "DELETE FROM Staffs WHERE StaffID = @StaffID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@StaffID", StaffID)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public DataTable selectQuery()
         {
-            string sql = "SELECT * FROM Staffs WHERE Username = '" + Username + "' AND Password = '" + Password + "'";
-            return Connection.selectQuery(sql);
+            string sql = "SELECT * FROM Staffs WHERE Username = @Username AND Password = @Password";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Username", Username),
+                new SqlParameter("@Password", Password)
+            };
+            return Connection.selectQuery(sql, parameters);
         }
 
         public int getStaffID()

@@ -43,5 +43,13 @@ namespace View
         {
             Application.Exit();
         }
+
+        private void tbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                bLogin_Click(sender, e);
+            }
+        }
     }
 }

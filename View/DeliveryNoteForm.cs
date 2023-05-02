@@ -110,22 +110,37 @@ namespace View
             if (condition == 1)
             {
                 ProdDeliveryController pd = new ProdDeliveryController(Convert.ToInt32(tbID.Text), Convert.ToInt32(tbOrderID.Text), Convert.ToInt32(tbQuantity.Text), Convert.ToInt32(cbDelivery.SelectedIndex), Convert.ToInt32(cbPayment.SelectedIndex), Convert.ToDateTime(dtDeliveryDate.Value.ToShortDateString()));
-                pd.addQuery();
-                MessageBox.Show("Add success", "Action status");
+                if(pd.addProdDeliveryAction())
+                {
+                    MessageBox.Show("Add success", "Action status");
+                }
+                else
+                {
+                    MessageBox.Show("Add failed", "Action status");
+                }
                 condition = 0;
+                clear();
                 load();
             }
             else if (condition == 2)
             {
                 ProdDeliveryController pd = new ProdDeliveryController(Convert.ToInt32(tbID.Text), Convert.ToInt32(tbOrderID.Text), Convert.ToInt32(tbQuantity.Text), Convert.ToInt32(cbDelivery.SelectedIndex), Convert.ToInt32(cbPayment.SelectedIndex), Convert.ToDateTime(dtDeliveryDate.Value.ToShortDateString()));
-                pd.updateQuery();
-                MessageBox.Show("Update success", "Action status");
+                if(pd.updateProdDeliveryAction())
+                {
+                    MessageBox.Show("Update success", "Action status");
+                }
+                else
+                {
+                    MessageBox.Show("Update failed", "Action status");
+                }
                 condition = 0;
+                clear();
                 load();
             }
             else
             {
                 condition = 0;
+                clear();
                 load();
             }
         }
@@ -179,8 +194,15 @@ namespace View
             if (MessageBox.Show("Are you sure to delete this record?", "Action confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ProdDeliveryController pd = new ProdDeliveryController(Convert.ToInt32(tbID.Text), Convert.ToInt32(tbOrderID.Text), Convert.ToInt32(tbQuantity.Text), Convert.ToInt32(cbDelivery.SelectedIndex), Convert.ToInt32(cbPayment.SelectedIndex), Convert.ToDateTime(dtDeliveryDate.Value.ToShortDateString()));
-                pd.deleteQuery();
-                MessageBox.Show("Delete success", "Action status");
+                if(pd.deleteProdDeliveryAction())
+                {
+                    MessageBox.Show("Delete success", "Action status");
+                }
+                else
+                {
+                    MessageBox.Show("Delete failed", "Action status");
+                }
+                clear();
                 load();
             }
             else

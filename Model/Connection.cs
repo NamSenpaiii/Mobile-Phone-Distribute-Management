@@ -20,20 +20,54 @@ namespace Model
 
         }
 
-        public static void actionQuery(string sql)
+        public static void actionQuery(string sql, SqlParameter[] parameters)
         {
-            connect();
-            SqlCommand cmd = new SqlCommand(sql, cn);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                connect();
+                using (SqlTransaction transaction = cn.BeginTransaction())
+                {
+                    SqlCommand cmd = new SqlCommand(sql, cn);
+                    cmd.Transaction = transaction;
+                    cmd.Parameters.AddRange(parameters);
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Some Error Occured", e);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
 
-        public static DataTable selectQuery(string sql)
+        public static DataTable selectQuery(string sql, SqlParameter[] parameters)
         {
-            connect();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, cn);
-            DataTable dt = new DataTable();
-            dataAdapter.Fill(dt);
-            return dt;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand(sql, cn);
+                cmd.Parameters.AddRange(parameters);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                return dt;
+            }catch(Exception e)
+            {
+                throw new Exception("Some Error Occured",e);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public static SqlConnection getConnection()
+        {
+            return cn;
         }
     }
 }

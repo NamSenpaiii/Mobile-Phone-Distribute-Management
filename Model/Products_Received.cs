@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,34 +27,63 @@ namespace Model
 
         public void addQuery()
         {
-            string sql = "INSERT INTO Products_Received VALUES(" + ReceivedID + "," + OrderID + "," + Quantity + ",'" + ReceivedDate.ToString("yyyy-MM-dd") + "')";
-            Connection.actionQuery(sql);
+            string sql = "INSERT INTO Products_Received VALUES(@ReceivedID,@OrderID,@Quantity,@ReceivedDate)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReceivedID", ReceivedID),
+                new SqlParameter("@OrderID", OrderID),
+                new SqlParameter("@Quantity", Quantity),
+                new SqlParameter("@ReceivedDate", ReceivedDate.ToString("yyyy-MM-dd"))
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE Products_Received SET OrderID = " + OrderID + ", Quantity = " + Quantity + ", ReceivedDate = '" + ReceivedDate.ToString("yyyy-MM-dd") + "' WHERE ReceivedID = " + ReceivedID;
-            Connection.actionQuery(sql);
+            string sql = "UPDATE Products_Received SET OrderID = @OrderID, Quantity = @Quantity, ReceivedDate = @ReceivedDate WHERE ReceivedID = @ReceivedID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReceivedID", ReceivedID),
+                new SqlParameter("@OrderID", OrderID),
+                new SqlParameter("@Quantity", Quantity),
+                new SqlParameter("@ReceivedDate", ReceivedDate.ToString("yyyy-MM-dd"))
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void deleteQuery()
         {
-            string sql = "DELETE FROM Products_Received WHERE ReceivedID = " + ReceivedID;
-            Connection.actionQuery(sql);
+            string sql = "DELETE FROM Products_Received WHERE ReceivedID = @ReceivedID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReceivedID", ReceivedID)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public DataTable selectQuery()
         {
             string sql = "SELECT * FROM Products_Received";
-            return Connection.selectQuery(sql);
+            SqlParameter[] parameters = new SqlParameter[0];
+            return Connection.selectQuery(sql, parameters);
+        }
+        public DataTable idSelectQuery()
+        {
+            string sql = "SELECT * FROM Products_Received WHERE ReceivedID = @ReceivedID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReceivedID", ReceivedID)
+            };
+            return Connection.selectQuery(sql, parameters);
         }
 
         public int generateID()
         {
             string sql = "SELECT MAX(ReceivedID) FROM Products_Received";
+            SqlParameter[] parameters = new SqlParameter[0];
             if(selectQuery().Rows.Count > 0)
             {
-                return Connection.selectQuery(sql).Rows[0].Field<int>(0) + 1;
+                return Connection.selectQuery(sql, parameters).Rows[0].Field<int>(0) + 1;
             }
             return 1;
         }

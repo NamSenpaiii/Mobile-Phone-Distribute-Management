@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,20 +22,36 @@ namespace Model
 
         public void addQuery()
         {
-            string sql = "INSERT INTO Sell_Orders VALUES(" + OrderID + ", " + CustomerID + ", '" + OrderDate + "')";
-            Connection.actionQuery(sql);
+            string sql = "INSERT INTO Sell_Orders VALUES(@OrderID,@CustomerID,@OrderDate)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", OrderID),
+                new SqlParameter("@CustomerID", CustomerID),
+                new SqlParameter("@OrderDate", OrderDate.ToString("yyyy-MM-dd"))
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void updateQuery()
         {
-            string sql = "UPDATE Sell_Orders SET CustomerID = " + CustomerID + ", OrderDate = '" + OrderDate + "' WHERE OrderID = " + OrderID;
-            Connection.actionQuery(sql);
+            string sql = "UPDATE Sell_Orders SET CustomerID = @CustomerID, OrderDate = @OrderDate WHERE OrderID = @OrderID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", OrderID),
+                new SqlParameter("@CustomerID", CustomerID),
+                new SqlParameter("@OrderDate", OrderDate.ToString("yyyy-MM-dd"))
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public void deleteQuery()
         {
-            string sql = "DELETE FROM Sell_Orders WHERE OrderID = " + OrderID;
-            Connection.actionQuery(sql);
+            string sql = "DELETE FROM Sell_Orders WHERE OrderID = @OrderID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", OrderID)
+            };
+            Connection.actionQuery(sql, parameters);
         }
 
         public int getOrderID()
