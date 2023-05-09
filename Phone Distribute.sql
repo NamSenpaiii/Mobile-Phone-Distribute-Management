@@ -11,6 +11,7 @@ CREATE TABLE Staffs (
 	Password VARCHAR(50) NOT NULL
 );
 
+
 INSERT INTO Staffs(StaffID, UserName, FirstName, LastName, Email, Password) VALUES 
 (1,'U001','Nam','Nhat','94.nguyenhonhatnam@gmail.com','12345'),
 (2,'U002','User','Test','testuser@gmail.com','12345'),
@@ -32,6 +33,10 @@ INSERT INTO Staffs(StaffID, UserName, FirstName, LastName, Email, Password) VALU
 (18, 'U018', 'An', 'Đinh', 'andinh@gmail.com', '12345'),
 (19, 'U019', 'Đại', 'Phạm', 'daipham@gmail.com', '12345'),
 (20, 'U020', 'Vũ', 'Lê', 'vule@gmail.com', '12345');
+
+INSERT INTO Staffs(StaffID,UserName,FirstName,LastName,Email,Password) values(1,'U001','Nam','Nhat','94.nguyenhonhatnam@gmail.com','12345')
+INSERT INTO Staffs(StaffID,UserName,FirstName,LastName,Email,Password) values(2,'U002','User','Test','testuser@gmail.com','12345')
+
 
 CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY,
@@ -94,6 +99,7 @@ INSERT INTO RCustomers (FirstName, LastName, Username, Password, Email) VALUES
 ('Emily', 'Robinson', 'emilyrobinson', '$2y$09$86nsaYHqfMx0HeIyGXlA6elw6vIme5sxScGYq1j71G0g5u5sKbI96', 'emilyrobinson@example.com'),
 ('Christopher', 'Wright', 'christopherwright', '$2y$10$Klf.CzFyKymhURnFn0NcneKX3zJY7pO5eC40LdmmPv37RZ1xuAn8O', 'christopherwright@example.com'),
 
+
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
@@ -124,6 +130,7 @@ INSERT INTO Products VALUES (18,'Apple iPad Air','New', 15000000, 30,'Apple');
 INSERT INTO Products VALUES (19,'Huawei MateBook X Pro','New', 20000000, 12,'Huawei');
 INSERT INTO Products VALUES (20,'OnePlus 9 Pro','New', 15000000, 20,'OnePlus');
 
+
 CREATE TABLE Purchase_Orders (
     OrderID INT PRIMARY KEY,
     StaffID INT NOT NULL,
@@ -152,6 +159,7 @@ INSERT INTO Purchase_Orders VALUES(18,3,'2023/05/13');
 INSERT INTO Purchase_Orders VALUES(19,1,'2023/05/14');
 INSERT INTO Purchase_Orders VALUES(20,4,'2023/05/15');
 
+
 CREATE TABLE PO_Details (
     OrderDetailID INT PRIMARY KEY,
     OrderID INT NOT NULL,
@@ -161,6 +169,7 @@ CREATE TABLE PO_Details (
     FOREIGN KEY (OrderID) REFERENCES Purchase_Orders(OrderID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
+
 INSERT INTO PO_Details VALUES
 (1,1,1,100,600000000),
 (2,2,2,50,500000000),
@@ -182,6 +191,10 @@ INSERT INTO PO_Details VALUES
 (18, 10, 5, 50, 300000000),
 (19, 11, 1, 75, 600000000),
 (20, 11, 4, 40, 200000000);
+
+INSERT INTO PO_Details VALUES(1,1,1,100,600000000)
+INSERT INTO PO_Details VALUES(2,2,2,50,500000000)
+
 
 CREATE TABLE Sell_Orders(
 	OrderID INT PRIMARY KEY,
@@ -210,6 +223,7 @@ INSERT INTO Sell_Orders VALUES(17,5,'2023/05/14');
 INSERT INTO Sell_Orders VALUES(18,3,'2023/05/15');
 INSERT INTO Sell_Orders VALUES(19,1,'2023/05/16');
 INSERT INTO Sell_Orders VALUES(20,4,'2023/05/17');
+
 
 CREATE TABLE SO_Details(
 	OrderDetailID INT PRIMARY KEY,
@@ -242,6 +256,9 @@ INSERT INTO SO_Details VALUES(18,18,18,25,120000000)
 INSERT INTO SO_Details VALUES(19,19,19,9,300000000)
 INSERT INTO SO_Details VALUES(20,20,20,16,150000000)
 
+
+
+
 CREATE TABLE Products_Received (
     ReceivedID INT PRIMARY KEY,
     OrderID INT NOT NULL,
@@ -271,6 +288,7 @@ INSERT INTO Products_Received VALUES(18,18,70,'2023/05/13');
 INSERT INTO Products_Received VALUES(19,19,80,'2023/05/14');
 INSERT INTO Products_Received VALUES(20,20,100,'2023/05/15');
 
+
 CREATE TABLE Products_Delivery (
 	DeliveryID INT PRIMARY KEY,
 	OrderID INT NOT NULL,
@@ -282,6 +300,7 @@ CREATE TABLE Products_Delivery (
 );
 INSERT INTO Products_Delivery VALUES(1,1,25,1,1,'2023/04/30')
 INSERT INTO Products_Delivery VALUES(2,2,20,0,0,'2023/04/30')
+
 INSERT INTO Products_Delivery VALUES(3,3,10,1,1,'2023/05/01');
 INSERT INTO Products_Delivery VALUES(4,4,15,1,0,'2023/05/01');
 INSERT INTO Products_Delivery VALUES(5,5,8,0,1,'2023/05/02');
@@ -300,6 +319,7 @@ INSERT INTO Products_Delivery VALUES(17,17,19,1,1,'2023/05/08');
 INSERT INTO Products_Delivery VALUES(18,18,7,0,1,'2023/05/08');
 INSERT INTO Products_Delivery VALUES(19,19,13,1,1,'2023/05/09');
 INSERT INTO Products_Delivery VALUES(20,20,21,1,0,'2023/05/09');
+
 /*
 delete from Products_Received
 select * from Products
