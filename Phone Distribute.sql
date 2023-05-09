@@ -34,10 +34,6 @@ INSERT INTO Staffs(StaffID, UserName, FirstName, LastName, Email, Password) VALU
 (19, 'U019', 'Đại', 'Phạm', 'daipham@gmail.com', '12345'),
 (20, 'U020', 'Vũ', 'Lê', 'vule@gmail.com', '12345');
 
-INSERT INTO Staffs(StaffID,UserName,FirstName,LastName,Email,Password) values(1,'U001','Nam','Nhat','94.nguyenhonhatnam@gmail.com','12345')
-INSERT INTO Staffs(StaffID,UserName,FirstName,LastName,Email,Password) values(2,'U002','User','Test','testuser@gmail.com','12345')
-
-
 CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY,
     CompanyName VARCHAR(50) NOT NULL,
@@ -45,28 +41,26 @@ CREATE TABLE Customers (
 	Password VARCHAR(50) NOT NULL
 );
 
-INSERT INTO Customers VALUES(1,'The Gioi Di Dong','tgdd123@gmail.com','12345')
-INSERT INTO Customers VALUES(2,'CellphoneS','cellphones123@gmail.com','12345')
-INSERT INTO Customers VALUES(1,'The Gioi Di Dong','tgdd123@gmail.com','12345')
-INSERT INTO Customers VALUES(2,'CellphoneS','cellphones123@gmail.com','12345')
-INSERT INTO Customers VALUES(3,'Công ty TNHH Hoàng Anh Gia Lai','hoanganh@gmail.com','12345')
-INSERT INTO Customers VALUES(4,'FPT Shop','fptshop@gmail.com','12345')
-INSERT INTO Customers VALUES(5,'Viễn Thông A','vienthonga@gmail.com','12345')
-INSERT INTO Customers VALUES(6,'Tiki','tiki@gmail.com','12345')
-INSERT INTO Customers VALUES(7,'Lotte.vn','lotte@gmail.com','12345')
-INSERT INTO Customers VALUES(8,'Shopee','shopee@gmail.com','12345')
-INSERT INTO Customers VALUES(9,'Sendo.vn','sendo@gmail.com','12345')
-INSERT INTO Customers VALUES(10,'MediaMart','mediamart@gmail.com','12345')
-INSERT INTO Customers VALUES(11,'Công ty TNHH Hoàng Anh Gia Lai','hoanganh@gmail.com','12345')
-INSERT INTO Customers VALUES(12,'Lazada','lazada@gmail.com','12345')
-INSERT INTO Customers VALUES(13,'Nguyễn Kim','nguyenkim@gmail.com','12345')
-INSERT INTO Customers VALUES(14,'A Đây Rồi','adaroi@gmail.com','12345')
-INSERT INTO Customers VALUES(15,'Điện Máy Xanh','dienmayxanh@gmail.com','12345')
-INSERT INTO Customers VALUES(16,'An Phát','anphat@gmail.com','12345')
-INSERT INTO Customers VALUES(17,'Mua Chung','muachung@gmail.com','12345')
-INSERT INTO Customers VALUES(18,'ChoTot','chotot@gmail.com','12345')
-INSERT INTO Customers VALUES(19,'Enbac','enbac@gmail.com','12345')
-INSERT INTO Customers VALUES(20,'Alibaba','alibaba@gmail.com','12345')
+INSERT INTO Customers VALUES(1,'The Gioi Di Dong','tgdd123@gmail.com','12345');
+INSERT INTO Customers VALUES(2,'CellphoneS','cellphones123@gmail.com','12345');
+INSERT INTO Customers VALUES(3,'Công ty TNHH Hoàng Anh Gia Lai','hoanganh@gmail.com','12345');
+INSERT INTO Customers VALUES(4,'FPT Shop','fptshop@gmail.com','12345');
+INSERT INTO Customers VALUES(5,'Viễn Thông A','vienthonga@gmail.com','12345');
+INSERT INTO Customers VALUES(6,'Tiki','tiki@gmail.com','12345');
+INSERT INTO Customers VALUES(7,'Lotte.vn','lotte@gmail.com','12345');
+INSERT INTO Customers VALUES(8,'Shopee','shopee@gmail.com','12345');
+INSERT INTO Customers VALUES(9,'Sendo.vn','sendo@gmail.com','12345');
+INSERT INTO Customers VALUES(10,'MediaMart','mediamart@gmail.com','12345');
+INSERT INTO Customers VALUES(11,'Công ty TNHH Hoàng Anh Gia Lai','hoanganh@gmail.com','12345');
+INSERT INTO Customers VALUES(12,'Lazada','lazada@gmail.com','12345');
+INSERT INTO Customers VALUES(13,'Nguyễn Kim','nguyenkim@gmail.com','12345');
+INSERT INTO Customers VALUES(14,'A Đây Rồi','adaroi@gmail.com','12345');
+INSERT INTO Customers VALUES(15,'Điện Máy Xanh','dienmayxanh@gmail.com','12345');
+INSERT INTO Customers VALUES(16,'An Phát','anphat@gmail.com','12345');
+INSERT INTO Customers VALUES(17,'Mua Chung','muachung@gmail.com','12345');
+INSERT INTO Customers VALUES(18,'ChoTot','chotot@gmail.com','12345');
+INSERT INTO Customers VALUES(19,'Enbac','enbac@gmail.com','12345');
+INSERT INTO Customers VALUES(20,'Alibaba','alibaba@gmail.com','12345');
 
 CREATE TABLE RCustomers (
     CustomerID INT AUTO_INCREMENT PRIMARY KEY,
@@ -97,7 +91,7 @@ INSERT INTO RCustomers (FirstName, LastName, Username, Password, Email) VALUES
 ('Jenny', 'Moore', 'jennymoore', '$2y$07$HsS.9bGkwGKIZYzLZgTXdOZJ0sXNd4M1bBz4c0xAT9gyPTp1GJb0u', 'jennymoore@example.com'),
 ('David', 'Clark', 'davidclark', '$2y$08$KpLwzqo74a1otSksF2hkLePqsyC41L//sXl4CllEzmhh/zmJh9Fgi', 'davidclark@example.com'),
 ('Emily', 'Robinson', 'emilyrobinson', '$2y$09$86nsaYHqfMx0HeIyGXlA6elw6vIme5sxScGYq1j71G0g5u5sKbI96', 'emilyrobinson@example.com'),
-('Christopher', 'Wright', 'christopherwright', '$2y$10$Klf.CzFyKymhURnFn0NcneKX3zJY7pO5eC40LdmmPv37RZ1xuAn8O', 'christopherwright@example.com'),
+('Christopher', 'Wright', 'christopherwright', '$2y$10$Klf.CzFyKymhURnFn0NcneKX3zJY7pO5eC40LdmmPv37RZ1xuAn8O', 'christopherwright@example.com');
 
 
 CREATE TABLE Products (
@@ -109,8 +103,8 @@ CREATE TABLE Products (
 	Provider VARCHAR (100)
 );
 
-INSERT INTO Products VALUES (1,'IPhone 11','Used', 6000000, 100,'Apple')
-INSERT INTO Products VALUES (2,'Xiaomi 11T','New', 10000000, 50,'Xiaomi')
+INSERT INTO Products VALUES (1,'IPhone 11','Used', 6000000, 100,'Apple');
+INSERT INTO Products VALUES (2,'Xiaomi 11T','New', 10000000, 50,'Xiaomi');
 INSERT INTO Products VALUES (3,'Samsung Galaxy S21','New', 12000000, 80,'Samsung');
 INSERT INTO Products VALUES (4,'Sony PlayStation 5','New', 14000000, 20,'Sony');
 INSERT INTO Products VALUES (5,'HP Spectre x360 14','New', 25000000, 10,'HP');
@@ -138,8 +132,8 @@ CREATE TABLE Purchase_Orders (
     FOREIGN KEY (StaffID) REFERENCES Staffs(StaffID)
 );
 
-INSERT INTO Purchase_Orders VALUES(1,1,'2023/04/27')
-INSERT INTO Purchase_Orders VALUES(2,2,'2023/04/26')
+INSERT INTO Purchase_Orders VALUES(1,1,'2023/04/27');
+INSERT INTO Purchase_Orders VALUES(2,2,'2023/04/26');
 INSERT INTO Purchase_Orders VALUES(3,3,'2023/04/25');
 INSERT INTO Purchase_Orders VALUES(4,1,'2023/05/01');
 INSERT INTO Purchase_Orders VALUES(5,4,'2023/04/28');
@@ -192,9 +186,6 @@ INSERT INTO PO_Details VALUES
 (19, 11, 1, 75, 600000000),
 (20, 11, 4, 40, 200000000);
 
-INSERT INTO PO_Details VALUES(1,1,1,100,600000000)
-INSERT INTO PO_Details VALUES(2,2,2,50,500000000)
-
 
 CREATE TABLE Sell_Orders(
 	OrderID INT PRIMARY KEY,
@@ -203,8 +194,8 @@ CREATE TABLE Sell_Orders(
 	FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
-INSERT INTO Sell_Orders VALUES(1,1,'2023/04/29')
-INSERT INTO Sell_Orders VALUES(2,2,'2023/04/26')
+INSERT INTO Sell_Orders VALUES(1,1,'2023/04/29');
+INSERT INTO Sell_Orders VALUES(2,2,'2023/04/26');
 INSERT INTO Sell_Orders VALUES(3,3,'2023/04/30');
 INSERT INTO Sell_Orders VALUES(4,1,'2023/05/02');
 INSERT INTO Sell_Orders VALUES(5,4,'2023/05/01');
@@ -235,26 +226,26 @@ CREATE TABLE SO_Details(
 	FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
-INSERT INTO SO_Details VALUES(1,1,1,25,150000000)
-INSERT INTO SO_Details VALUES(2,2,2,20,200000000)
-INSERT INTO SO_Details VALUES(3,3,3,10,300000000)
-INSERT INTO SO_Details VALUES(4,4,4,5,750000000)
-INSERT INTO SO_Details VALUES(5,5,5,30,120000000)
-INSERT INTO SO_Details VALUES(6,6,6,15,90000000)
-INSERT INTO SO_Details VALUES(7,7,7,40,50000000)
-INSERT INTO SO_Details VALUES(8,8,8,12,180000000)
-INSERT INTO SO_Details VALUES(9,9,9,8,250000000)
-INSERT INTO SO_Details VALUES(10,10,10,18,80000000)
-INSERT INTO SO_Details VALUES(11,11,11,4,450000000)
-INSERT INTO SO_Details VALUES(12,12,12,35,100000000)
-INSERT INTO SO_Details VALUES(13,13,13,22,180000000)
-INSERT INTO SO_Details VALUES(14,14,14,7,350000000)
-INSERT INTO SO_Details VALUES(15,15,15,15,90000000)
-INSERT INTO SO_Details VALUES(16,16,16,10,50000000)
-INSERT INTO SO_Details VALUES(17,17,17,6,75000000)
-INSERT INTO SO_Details VALUES(18,18,18,25,120000000)
-INSERT INTO SO_Details VALUES(19,19,19,9,300000000)
-INSERT INTO SO_Details VALUES(20,20,20,16,150000000)
+INSERT INTO SO_Details VALUES(1,1,1,25,150000000);
+INSERT INTO SO_Details VALUES(2,2,2,20,200000000);
+INSERT INTO SO_Details VALUES(3,3,3,10,300000000);
+INSERT INTO SO_Details VALUES(4,4,4,5,750000000);
+INSERT INTO SO_Details VALUES(5,5,5,30,120000000);
+INSERT INTO SO_Details VALUES(6,6,6,15,90000000);
+INSERT INTO SO_Details VALUES(7,7,7,40,50000000);
+INSERT INTO SO_Details VALUES(8,8,8,12,180000000);
+INSERT INTO SO_Details VALUES(9,9,9,8,250000000);
+INSERT INTO SO_Details VALUES(10,10,10,18,80000000);
+INSERT INTO SO_Details VALUES(11,11,11,4,450000000);
+INSERT INTO SO_Details VALUES(12,12,12,35,100000000);
+INSERT INTO SO_Details VALUES(13,13,13,22,180000000);
+INSERT INTO SO_Details VALUES(14,14,14,7,350000000);
+INSERT INTO SO_Details VALUES(15,15,15,15,90000000);
+INSERT INTO SO_Details VALUES(16,16,16,10,50000000);
+INSERT INTO SO_Details VALUES(17,17,17,6,75000000);
+INSERT INTO SO_Details VALUES(18,18,18,25,120000000);
+INSERT INTO SO_Details VALUES(19,19,19,9,300000000);
+INSERT INTO SO_Details VALUES(20,20,20,16,150000000);
 
 
 
@@ -267,8 +258,8 @@ CREATE TABLE Products_Received (
 	FOREIGN KEY (OrderID) REFERENCES Purchase_Orders(OrderID)
 );
 
-INSERT INTO Products_Received VALUES(1,1,100,'2023/04/27')
-INSERT INTO Products_Received VALUES(2,2,50,'2023/04/26')
+INSERT INTO Products_Received VALUES(1,1,100,'2023/04/27');
+INSERT INTO Products_Received VALUES(2,2,50,'2023/04/26');
 INSERT INTO Products_Received VALUES(3,3,75,'2023/04/25');
 INSERT INTO Products_Received VALUES(4,4,50,'2023/05/01');
 INSERT INTO Products_Received VALUES(5,5,25,'2023/04/28');
@@ -298,9 +289,8 @@ CREATE TABLE Products_Delivery (
 	DeliveryDate Date NOT NULL,
 	FOREIGN KEY (OrderID) REFERENCES Sell_Orders(OrderID)
 );
-INSERT INTO Products_Delivery VALUES(1,1,25,1,1,'2023/04/30')
-INSERT INTO Products_Delivery VALUES(2,2,20,0,0,'2023/04/30')
-
+INSERT INTO Products_Delivery VALUES(1,1,25,1,1,'2023/04/30');
+INSERT INTO Products_Delivery VALUES(2,2,20,0,0,'2023/04/30');
 INSERT INTO Products_Delivery VALUES(3,3,10,1,1,'2023/05/01');
 INSERT INTO Products_Delivery VALUES(4,4,15,1,0,'2023/05/01');
 INSERT INTO Products_Delivery VALUES(5,5,8,0,1,'2023/05/02');
