@@ -103,27 +103,26 @@ CREATE TABLE Products (
 	Provider VARCHAR (100)
 );
 
-INSERT INTO Products VALUES (1,'IPhone 11','Used', 6000000, 100,'Apple');
-INSERT INTO Products VALUES (2,'Xiaomi 11T','New', 10000000, 50,'Xiaomi');
-INSERT INTO Products VALUES (3,'Samsung Galaxy S21','New', 12000000, 80,'Samsung');
-INSERT INTO Products VALUES (4,'Sony PlayStation 5','New', 14000000, 20,'Sony');
-INSERT INTO Products VALUES (5,'HP Spectre x360 14','New', 25000000, 10,'HP');
-INSERT INTO Products VALUES (6,'Logitech G502 Hero','New', 1200000, 30,'Logitech');
-INSERT INTO Products VALUES (7,'Dell XPS 13','Used', 15000000, 5,'Dell');
-INSERT INTO Products VALUES (8,'Nintendo Switch','Used', 8000000, 15,'Nintendo');
-INSERT INTO Products VALUES (9,'Canon EOS R6','New', 40000000, 8,'Canon');
-INSERT INTO Products VALUES (10,'Bose QuietComfort 35 II','New', 7000000, 25,'Bose');
-INSERT INTO Products VALUES (11,'LG C1 OLED TV','New', 35000000, 12,'LG');
-INSERT INTO Products VALUES (12,'Garmin Forerunner 945','New', 15000000, 20,'Garmin');
-INSERT INTO Products VALUES (13,'Microsoft Surface Laptop 4','New', 20000000, 15,'Microsoft');
-INSERT INTO Products VALUES (14,'Nikon Z7 II','New', 50000000, 6,'Nikon');
-INSERT INTO Products VALUES (15,'Samsung Galaxy Watch 4','New', 7000000, 18,'Samsung');
-INSERT INTO Products VALUES (16,'Sony WH-1000XM4','New', 10000000, 40,'Sony');
-INSERT INTO Products VALUES (17,'Razer Blade 15','New', 28000000, 8,'Razer');
-INSERT INTO Products VALUES (18,'Apple iPad Air','New', 15000000, 30,'Apple');
-INSERT INTO Products VALUES (19,'Huawei MateBook X Pro','New', 20000000, 12,'Huawei');
-INSERT INTO Products VALUES (20,'OnePlus 9 Pro','New', 15000000, 20,'OnePlus');
-
+INSERT INTO Products VALUES (1,'iPhone 6s', '4.7-inch display, A9 chip, 12-megapixel camera', 299.99, 100,'Apple');
+INSERT INTO Products VALUES (2,'iPhone 7 Plus', '5.5-inch display, A10 chip, dual 12-megapixel cameras', 499.99, 50,'Apple');
+INSERT INTO Products VALUES (3,'Nokia 3', '5.0-inch display, MediaTek MT6737, 8-megapixel camera', 129.99, 100,'Nokia');
+INSERT INTO Products VALUES (4,'Nokia 8', '5.3-inch display, Qualcomm Snapdragon 835, dual 13-megapixel cameras', 399.99, 20,'Nokia');
+INSERT INTO Products VALUES (5,'Oppo A71', '5.2-inch display, MediaTek MT6750, 13-megapixel camera', 199.99, 10,'Oppo');
+INSERT INTO Products VALUES (6,'Oppo F3 Plus', '6.0-inch display, Qualcomm Snapdragon 653, dual 16-megapixel cameras', 349.99, 30,'Oppo');
+INSERT INTO Products VALUES (7,'Samsung Galaxy J3', '5.0-inch display, Exynos 7570, 8-megapixel camera', 149.99, 5,'Samsung');
+INSERT INTO Products VALUES (8,'Samsung Galaxy J7', '5.5-inch display, Exynos 7870, 13-megapixel camera', 249.99, 15,'Samsungo');
+INSERT INTO Products VALUES (9,'Samsung Galaxy Note 5', '5.7-inch display, Exynos 7420, 16-megapixel camera', 499.99, 8,'Samsung');
+INSERT INTO Products VALUES (10,'Xiaomi Mi A2', '5.99-inch display, Qualcomm Snapdragon 660, dual 12-megapixel cameras', 299.99, 25,'Xiaomi');
+INSERT INTO Products VALUES (11,'Xiaomi Redmi 4X', '5.0-inch display, Qualcomm Snapdragon 435, 13-megapixel camera', 129.99, 12,'Xiaomi');
+INSERT INTO Products VALUES (12,'Huawei P10', '5.1-inch display, Kirin 960, dual 20-megapixel cameras', 449.99, 7,'Huawei');
+INSERT INTO Products VALUES (13,'Huawei P20 Pro', '6.1-inch display, Kirin 970, triple 40/20/8-megapixel cameras', 799.99, 3,'Huawei');
+INSERT INTO Products VALUES (14,'Google Pixel 2', '5.0-inch display, Snapdragon 835, 12-megapixel camera', 549.99, 6,'Google');
+INSERT INTO Products VALUES (15,'Google Pixel 3 XL', '6.3-inch display, Snapdragon 845, 12.2-megapixel camera', 899.99, 2,'Google');
+INSERT INTO Products VALUES (16,'OnePlus 5T', '6.01-inch display, Snapdragon 835, dual 16/20-megapixel cameras', 599.99, 4,'OnePlus');
+INSERT INTO Products VALUES (17,'OnePlus 6T', '6.41-inch display, Snapdragon 845, dual 16/20-megapixel cameras', 699.99, 5,'OnePlus');
+INSERT INTO Products VALUES (18,'Sony Xperia XZ1', '5.2-inch display, Snapdragon 835, 19-megapixel camera', 599.99, 3,'Sony');
+INSERT INTO Products VALUES (19,'Sony Xperia XZ2 Premium', '5.8-inch display, Snapdragon 845, dual 19/12-megapixel cameras', 999.99, 1,'Sony');
+INSERT INTO Products VALUES (20,'LG V30+', '6.0-inch display, Snapdragon 835, dual 16-megapixel cameras', 799.99, 2,'LG');
 
 CREATE TABLE Purchase_Orders (
     OrderID INT PRIMARY KEY,
