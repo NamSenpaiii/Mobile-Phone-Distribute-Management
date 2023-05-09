@@ -3,7 +3,7 @@
     function login($username, $password)
     {
         $conn = create_connection();
-        $sql = "select * from customers where username = ?";
+        $sql = "select * from Rcustomers where username = ?";
         $stm = $conn->prepare($sql);
         $stm->bind_param('s', $username);
 

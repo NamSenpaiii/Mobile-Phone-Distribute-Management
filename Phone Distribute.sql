@@ -72,6 +72,8 @@ CREATE TABLE RCustomers (
 );
 
 INSERT INTO RCustomers (FirstName, LastName, Username, Password, Email) VALUES
+('John', 'Doe', 'johndoe', '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq', 'johndoe@example.com'),
+('Jane', 'Doe', 'janedoe', '$2y$10$Eh9CbonYGsC6y6Jg6EEpbuQnEmPz5SvSd65.HbRh70Fr9XwdLure.', 'janedoe@example.com'),
 ('Michael', 'Johnson', 'michaelj', '$2y$12$uKJz2sM3O2JWh4s5ln5bIu6U0JF9YsDfj8x.GTJt4rUxrhQ4uOSqK', 'michaelj@example.com'),
 ('Sarah', 'Lee', 'sarahlee', '$2y$12$FfXxXCHo5/SvSIJqNFX/4uxWYQ1y57fDv6JQ6no98yL5DCoXfiKzi', 'sarahlee@example.com'),
 ('Daniel', 'Kim', 'danielkim', '$2y$12$zmb8fjUvU7cyKvn/BhXGweu1p8.8NtX/Yd5d5DPWAs5McMqDBRsEy', 'danielkim@example.com'),
@@ -124,6 +126,32 @@ INSERT INTO Products VALUES (18,'Sony Xperia XZ1', '5.2-inch display, Snapdragon
 INSERT INTO Products VALUES (19,'Sony Xperia XZ2 Premium', '5.8-inch display, Snapdragon 845, dual 19/12-megapixel cameras', 999.99, 1,'Sony');
 INSERT INTO Products VALUES (20,'LG V30+', '6.0-inch display, Snapdragon 835, dual 16-megapixel cameras', 799.99, 2,'LG');
 
+CREATE TABLE ROrders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT NOT NULL,
+    OrderDate DATETIME NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES RCustomers(CustomerID)
+);
+
+CREATE TABLE cart (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  CustomerID INT NOT NULL,
+  ProductID INT NOT NULL,
+  Quantity INT NOT NULL,
+  FOREIGN KEY (CustomerID) REFERENCES RCustomers(CustomerID),
+  FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE ROrderDetails (
+    OrderDetailID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderID INT NOT NULL,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (OrderID) REFERENCES ROrders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
 CREATE TABLE Purchase_Orders (
     OrderID INT PRIMARY KEY,
     StaffID INT NOT NULL,
@@ -151,7 +179,6 @@ INSERT INTO Purchase_Orders VALUES(17,5,'2023/05/12');
 INSERT INTO Purchase_Orders VALUES(18,3,'2023/05/13');
 INSERT INTO Purchase_Orders VALUES(19,1,'2023/05/14');
 INSERT INTO Purchase_Orders VALUES(20,4,'2023/05/15');
-
 
 CREATE TABLE PO_Details (
     OrderDetailID INT PRIMARY KEY,

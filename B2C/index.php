@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
-        exit();
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,36 +28,39 @@
                 <a class="btn btn-sm btn-secondary mb-4" href="add_product.php">Add Product</a>
                 <a href="logout.php">Logout</a>
             </div>
-            <table class="table-bordered table table-hover text-center">
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-                <tr>
-                    <td class="align-middle"><img src="images/iphone-7-plus-128gb-de-400x460.png"></td>
-                    <td class="align-middle">iPhone 7 Plus 128 GB</td>
-                    <td class="align-middle">9,490,000 VND</td>
-                    <td class="align-middle">Mẫu iPhone mới nhất của Apple</td>
-                    <td class="align-middle">
-                        <button class="btn btn-sm btn-primary mr-1 edit-btn"><i class="fas fa-pen"></i></button>
-                        <button class="btn btn-sm btn-danger delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr class="item">
-                    <td class="align-middle"><img src="images/samsung-galaxy-j7-plus-1-400x460.png"></td>
-                    <td class="align-middle">iPhone 7 Plus 128 GB</td>
-                    <td class="align-middle">9,490,000 VND</td>
-                    <td class="align-middle">Mẫu iPhone mới nhất của Apple</td>
-                    <td class="align-middle">
-                        <button class="btn btn-sm btn-primary mr-1 edit-btn"><i class="fas fa-pen"></i></button>
-                        <button class="btn btn-sm btn-danger delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-            </table>
-            <p class="text-right">Total products: <strong>2</strong></p>
+            <?php
+            include 'db\config.php';
+            // Truy vấn cơ sở dữ liệu để lấy danh sách sản phẩm
+            $sql = "SELECT * FROM products";
+            $result = $conn->query($sql);
+            $total = mysqli_num_rows($result); // get total number of rows in the result set
+
+            // Hiển thị danh sách sản phẩm trong bảng HTML
+            echo '<h3>Total Products: ' . $total . '</h3>'; // display total number of products
+            echo '<table class="table-bordered table table-hover text-center">';
+            echo '<tr>';
+            echo '<th>Image</th>';
+            echo '<th>Name</th>';
+            echo '<th>Price</th>';
+            echo '<th>Description</th>';
+            echo '<th>Actions</th>';
+            echo '</tr>';
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<tr>';
+                echo '<td class="align-middle"><img src="images/' . $row["Name"] . '.png"></td>';
+                echo '<td class="align-middle">' . $row["Name"] . '</td>';
+                echo '<td class="align-middle">' . $row["Price"] . '</td>';
+                echo '<td class="align-middle">' . $row["Description"] . '</td>';
+                echo '<td class="align-middle">';
+                echo '<button class="btn btn-sm btn-primary mr-1 edit-btn"><i class="fas fa-pen"></i></button>';
+                echo '<button class="btn btn-sm btn-danger delete-btn" data-id="' . $row["ProductID"] . '"><i class="fas fa-trash-alt"></i></button>';
+                echo '</td>';
+                echo '</tr>';
+            }
+
+            echo '</table>';
+            ?>
         </div>
     </div>
 </div>
@@ -96,7 +92,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <hp class="modal-title">Update product <strong>iPhone XS MAX</strong></hp>
+                    <hp class="modal-title">Update product <strong></strong></hp>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -119,32 +115,34 @@
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-sm btn-success">Save</button>
                 </div>
-    
+
             </div>
     
         </div>
     </div>
 
     <script>
-        $(document).ready(function () {
-
-            // show delete confirm
-            $(".delete-btn").click(function () {
-                $('#deleteModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-            });
-
-            // show edit confirm
-            $(".edit-btn").click(function () {
-                $('#editModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
+    $(document).ready(function(){
+        $('.delete-btn').on('click', function(){
+            var id = $(this).data('id');
+            var name = $(this).closest('tr').find('td:eq(1)').text(); // get the product name from the table row
+            $('#deleteModal').find('.modal-body p strong').text(name);
+            $('#deleteModal').modal('show');
+            $('#deleteModal').find('.btn-danger').on('click', function(){
+                $.ajax({
+                    url: 'delete_product.php',
+                    type: 'post',
+                    data: { id: id },
+                    success: function(){
+                        window.location.reload();
+                    },
+                    error: function(){
+                        alert('Error deleting product');
+                    }
                 });
             });
         });
-    </script>
-
+    });
+</script>
 </body>
 </html>

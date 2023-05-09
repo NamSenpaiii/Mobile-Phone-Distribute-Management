@@ -3,7 +3,7 @@
     require_once('db/dbaccount.php');
     session_start();
     if (isset($_SESSION['user'])) {
-        header('Location: index.php');
+        header('Location: home.php');
         exit();
     }
 
@@ -28,10 +28,7 @@
         else if (login($user, $pass)) {
             // success
 
-            $_SESSION['user'] = 'admin';
-            $_SESSION['name'] = 'Mai Van Manh';
-
-            header('Location: index.php');
+            header('Location: home.php');
             exit();
         }else {
             $error = 'Invalid username or password';

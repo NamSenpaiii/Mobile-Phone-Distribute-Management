@@ -43,7 +43,7 @@
             $conn->close();
 
             // Chuyển hướng về trang chủ
-            header("Location: home.php");
+            header("Location: index.php");
             exit();
         }
     }

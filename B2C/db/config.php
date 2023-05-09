@@ -2,7 +2,7 @@
 define('HOST', 'localhost');
 define('USERNAME', 'root');
 define('PASSWORD', '');
-define('DATABASE', 'ordersystem');
+define('DATABASE', 'mobilephonedistributemanagement');
 
 function create_connection() {
 	$conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
